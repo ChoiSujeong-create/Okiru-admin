@@ -4,7 +4,7 @@
 <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!-->
-<html class="no-js" lang="en">
+<html class="no-js" lang="ja">
   <!--<![endif]-->
   <head>
     <meta charset="utf-8" />
@@ -23,6 +23,53 @@
     <![endif]-->
   </head>
   <body>
+    <div id="contents"></div>
+    <script src="https:www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https:www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyClPkQwF-croD-7CC5IvVhmaA0aj6V54f0",
+        authDomain: "okiru-c9eb0.firebaseapp.com",
+        databaseURL:
+          "https://okiru-c9eb0-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "okiru-c9eb0",
+        storageBucket: "okiru-c9eb0.appspot.com",
+        messagingSenderId: "920949238800",
+        appId: "1:920949238800:web:260709b12206b98ca46e95",
+        measurementId: "G-DMD2JCJLDF",
+      };
+
+      firebase.initializeApp(firebaseConfig);
+
+      var reference_a = firebase.database().ref("KeyA");
+      var reference_b = firebase.database().ref("KeyB");
+      var reference_c = firebase.database().ref("KeyC");
+
+      reference_a.on("value", (snapshot) => {
+        const data = snapshot.val();
+        addText(data);
+      });
+      reference_b.on("value", (snapshot) => {
+        const data = snapshot.val();
+        addText(data);
+      });
+      reference_C.on("value", (snapshot) => {
+        const data1 = snapshot.val().value1;
+        const data2 = snapshot.val().value2;
+        const data3 = snapshot.val().value3;
+        addText(data1);
+        addText(data2);
+        addText(data3);
+      });
+
+      function addText(data) {
+        const p = document.createElement("p");
+        p.innerHTML = data;
+        const div = document.getElementById(contents);
+        div.appendChild(p);
+      }
+    </script>
+
     <div class="row">
       <div class="headerlogo four columns">
         <div class="logo">
@@ -40,24 +87,19 @@
             <li>
               <a href="#">アナリティクス</a>
               <ul>
-                <li><a href="portofolio4.html">金銭管理</a></li>
+                <li><a href="">金銭管理</a></li>
                 <li><a href="portofolio4.html">プロジェクト管理</a></li>
                 <li><a href="portofoliodetail.html">プロジェクト詳細</a></li>
               </ul>
             </li>
             <li>
-              <a href="#">会員データ</a>
-              <ul>
-                <li><a href="#">会員データ</a></li>
-                <li><a href="about.html">人数変動</a></li>
-                <li><a href="services.html">詳細</a></li>
-              </ul>
+              <a href="memberdata.html">会員データ</a>
             </li>
             <li>
               <a href="#">企業データ</a>
               <ul>
-                <li><a href="columns.html">企業データ</a></li>
-                <li><a href="elements.html">クーポン管理</a></li>
+                <li><a href="">企業データ</a></li>
+                <li><a href="">クーポン管理</a></li>
               </ul>
             </li>
 
@@ -102,46 +144,40 @@
         <ul class="ca-menu">
           <li>
             <a href="#">
-              <span class="ca-icon">A</span>
+              <span class="ca-icon">アナリティクス</span>
               <div class="ca-content">
-                <h2 class="ca-main">アナリティクス</h2>
-                <h3 class="ca-sub">
-                  金銭管理<br />
-                  プロジェクト管理・詳細
-                </h3>
+                <h2 class="ca-main">金銭管理<br />プロジェクト管理</h2>
+                <!--<h3 class="ca-sub">Across all major devices</h3>-->
               </div>
             </a>
           </li>
           <li>
             <a href="#">
-              <span class="ca-icon">M</span>
+              <span class="ca-icon">会員データ</span>
               <div class="ca-content">
-                <h2 class="ca-main">会員データ</h2>
-                <h3 class="ca-sub">
-                  会員データ<br />
-                  人数変動<br />詳細
-                </h3>
+                <h2 class="ca-main">会員データ<br />人数変動<br />詳細</h2>
+                <!--<h3 class="ca-sub">Straight to the point</h3>-->
               </div>
             </a>
           </li>
           <li>
             <a href="#">
-              <span class="ca-icon">E</span>
+              <span class="ca-icon">企業データ</span>
               <div class="ca-content">
-                <h2 class="ca-main">企業データ</h2>
-                <h3 class="ca-sub">
+                <h2 class="ca-main">
                   企業データ<br />
                   クーポン管理
-                </h3>
+                </h2>
+                <!--<h3 class="ca-sub">Full slider, boxed or none</h3>-->
               </div>
             </a>
           </li>
           <li>
             <a href="#">
-              <span class="ca-icon">Q</span>
+              <span class="ca-icon">お問い合わせ</span>
               <div class="ca-content">
-                <h2 class="ca-main">お問合せ</h2>
-                <h3 class="ca-sub">お客様からの質問と要望</h3>
+                <h2 class="ca-main">企業からの質問<br />ユーザーからの質問</h2>
+                <!--<h3 class="ca-sub">Isotop & PrettyPhoto</h3>-->
               </div>
             </a>
           </li>
@@ -149,96 +185,9 @@
       </div>
     </div>
 
-    <!-- CLIENTS 
-================================================== -->
-    <div class="row">
-      <div class="twelve columns">
-        <div class="centersectiontitle">
-          <h4>Clients</h4>
-        </div>
-      </div>
-      <div class="twelve columns">
-        <div class="image_carousel fitcarousel">
-          <div id="foo2">
-            <img
-              src="http://placehold.it/140x140/222"
-              alt=""
-              width="140"
-              height="140"
-            />
-            <img
-              src="http://placehold.it/140x140/333"
-              alt=""
-              width="140"
-              height="140"
-            />
-            <img
-              src="http://placehold.it/140x140/222"
-              alt=""
-              width="140"
-              height="140"
-            />
-            <img
-              src="http://placehold.it/140x140/333"
-              alt=""
-              width="140"
-              height="140"
-            />
-            <img
-              src="http://placehold.it/140x140/222"
-              alt=""
-              width="140"
-              height="140"
-            />
-            <img
-              src="http://placehold.it/140x140/333"
-              alt=""
-              width="140"
-              height="140"
-            />
-            <img
-              src="http://placehold.it/140x140/222"
-              alt=""
-              width="140"
-              height="140"
-            />
-            <img
-              src="http://placehold.it/140x140/333"
-              alt=""
-              width="140"
-              height="140"
-            />
-            <img
-              src="http://placehold.it/140x140/222"
-              alt=""
-              width="140"
-              height="140"
-            />
-            <img
-              src="http://placehold.it/140x140/333"
-              alt=""
-              width="140"
-              height="140"
-            />
-            <img
-              src="http://placehold.it/140x140/222"
-              alt=""
-              width="140"
-              height="140"
-            />
-            <img
-              src="http://placehold.it/140x140/333"
-              alt=""
-              width="140"
-              height="140"
-            />
-          </div>
-          <div class="clearfix"></div>
-          <a class="prev" id="foo2_prev" href="#"><span>prev</span></a>
-          <a class="next" id="foo2_next" href="#"><span>next</span></a>
-        </div>
-      </div>
-    </div>
+    <!-- firebase からデータを受信する　-->
+    <!-- firebase からデータを受信する　-->
+
     <!-- TESTIMONIALS 
 ================================================== -->
     <div class="row">
