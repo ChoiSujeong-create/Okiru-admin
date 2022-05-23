@@ -40,34 +40,6 @@
       };
 
       firebase.initializeApp(firebaseConfig);
-
-      var reference_a = firebase.database().ref("KeyA");
-      var reference_b = firebase.database().ref("KeyB");
-      var reference_c = firebase.database().ref("KeyC");
-
-      reference_a.on("value", (snapshot) => {
-        const data = snapshot.val();
-        addText(data);
-      });
-      reference_b.on("value", (snapshot) => {
-        const data = snapshot.val();
-        addText(data);
-      });
-      reference_C.on("value", (snapshot) => {
-        const data1 = snapshot.val().value1;
-        const data2 = snapshot.val().value2;
-        const data3 = snapshot.val().value3;
-        addText(data1);
-        addText(data2);
-        addText(data3);
-      });
-
-      function addText(data) {
-        const p = document.createElement("p");
-        p.innerHTML = data;
-        const div = document.getElementById(contents);
-        div.appendChild(p);
-      }
     </script>
 
     <div class="row">

@@ -156,9 +156,127 @@
     <div class="row">
         <hr>
 
+
+        <h5>会員リスト</h5>
+        
+        <h6>User1</h6>
         <!-- TABLES-->
         <div class="seven columns">
-            <h5>会員リスト</h5>
+
+            <div id="contents"></div>
+
+            
+            <script src="https:www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+            <script src="https:www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+            <script>
+              const firebaseConfig = {
+                apiKey: "AIzaSyClPkQwF-croD-7CC5IvVhmaA0aj6V54f0",
+                authDomain: "okiru-c9eb0.firebaseapp.com",
+                databaseURL:
+                  "https://okiru-c9eb0-default-rtdb.asia-southeast1.firebasedatabase.app",
+                projectId: "okiru-c9eb0",
+                storageBucket: "okiru-c9eb0.appspot.com",
+                messagingSenderId: "920949238800",
+                appId: "1:920949238800:web:260709b12206b98ca46e95",
+                measurementId: "G-DMD2JCJLDF",
+              };
+        
+              firebase.initializeApp(firebaseConfig);
+              //firebaseからデータお受信するための「リスナー」の設置
+        
+           
+           
+           
+              var key = new Array();
+            var value = new Array();
+              firebase.database().ref('User1').once('value', function(snap){    
+                for (var i in snap.val()){
+                    key[i] = snap.key;
+                    value[i] = snap.val()[i];
+                    console.log(value[i]);
+                }
+              })
+        var reference_name = firebase.database().ref("User1")
+        var reference_birth = firebase.database().ref("User1")
+        var reference_ID = firebase.database().ref("User1")
+        var reference_pw = firebase.database().ref("User1")
+        var reference_adress = firebase.database().ref("User1")
+        var reference_mail = firebase.database().ref("User1")
+        var reference_tel = firebase.database().ref("User1")
+        var reference_company = firebase.database().ref("User1")
+        var reference_credit = firebase.database().ref("User1")
+        var reference_bank = firebase.database().ref("User1")
+        var reference_job = firebase.database().ref("User1")
+              
+
+        reference_name.on('value', (snapshot) => {
+            const data = snapshot.val().Name;
+            addText("名前 : " + data)
+        })
+ 
+        reference_birth.on('value', (snapshot) => {
+            const data = snapshot.val().Birth;
+            addText("生年月日 : " +data)
+ 
+        })
+ 
+        reference_ID.on('value', (snapshot) => {
+            const data = snapshot.val().ID;
+            addText("登録ID : "+data)
+ 
+        })
+        reference_pw.on('value', (snapshot) => {
+            const data = snapshot.val().PW;
+            addText("パスワード : "+data)
+ 
+        })
+        reference_adress.on('value', (snapshot) => {
+            const data = snapshot.val().Address;
+            addText("住所 : "+data)
+ 
+        })
+        reference_mail.on('value', (snapshot) => {
+            const data = snapshot.val().Mail;
+            addText("メール : "+data)
+ 
+        })
+        reference_tel.on('value', (snapshot) => {
+            const data = snapshot.val().Tel;
+            addText("電話番号 : "+data)
+ 
+        })
+        reference_company.on('value', (snapshot) => {
+            const data = snapshot.val().Company;
+            addText("勤め先 : "+data)
+ 
+        })
+        reference_credit.on('value', (snapshot) => {
+            const data = snapshot.val().Credit;
+            addText("クレジットカード : "+data)
+ 
+        })
+        reference_bank.on('value', (snapshot) => {
+            const data = snapshot.val().Bank;
+            addText("口座番号 : "+data)
+ 
+        })
+ 
+        reference_job.on('value',(snapshot)=>{
+            const data = snapshot.val().Job;
+            addText("職業 : "+data)
+  
+        })
+ 
+        function addText(data) {
+            const p = document.createElement("p");
+            p.innerHTML = data
+            const div = document.getElementById("contents")
+            div.appendChild(p)
+        }
+       
+              </script>
+
+<!-- 
             <table>
                 <thead>
                     <tr>
@@ -243,7 +361,7 @@
                         </td>
                     </tr>
                 </tbody>
-            </table>
+            </table> -->
         </div>
 
         <!-- JAVASCRIPTS 

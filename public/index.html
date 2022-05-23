@@ -28,17 +28,32 @@
       };
 
       firebase.initializeApp(firebaseConfig);
-      //firebaseにデータを送信するための関数
+      //firebaseにデータを送信するための関数;
       function sendDataToFirebase() {
         var db = firebase.database();
-        db.ref("KeyA").set("あああ");
-        db.ref("KeyB").set("いいい");
-        db.ref("KeyC").set({
-          value1: "5521",
-          value2: "ううう2",
-          value3: "ううう5",
+        db.ref("User1").set({
+          Name: "Okiru",
+          Birth: 20220523,
+          ID: "okiru1",
+          PW: "0523",
+          Mail: "okiru@gmail.com",
+          Address: "chiba",
+          Tel: 08012345678,
+          Company: "CTC",
+          Bank: "y123456",
+          Credit: "JCB4567891234",
         });
+
+        //db.ref("KeyB").set("いいい");
+
+        //   db.ref("KeyC").set({
+        //     value1: "5521",
+        //     value2: "ううう2",
+        //     value3: "ううう5",
+        //   });
+        //
       }
+
       //firebaseからデータお受信するための「リスナー」の設置
 
       var reference_a = firebase.database().ref("KeyA");
@@ -49,11 +64,11 @@
         console.log("keyAに紐づけられた値:" + snapshot.val());
       });
 
-      reference_a.on("value", (snapshot) => {
+      reference_b.on("value", (snapshot) => {
         console.log("keyBに紐づけられた値:" + snapshot.val());
       });
 
-      reference_a.on("value", (snapshot) => {
+      reference_c.on("value", (snapshot) => {
         console.log("keyCに紐づけられた値:" + snapshot.val());
       });
 
